@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financehelper.data.model.Finance
-import com.example.financehelper.data.model.Money
+import com.example.financehelper.data.model.SalaryAndSpent
 import com.example.financehelper.data.model.Wallet
-import com.example.financehelper.databinding.MoneyAmountBinding
+import com.example.financehelper.databinding.SalaryMoneySpentItemBinding
 import com.example.financehelper.databinding.WalletItemBinding
 
 class MainScreenAdapter: RecyclerView.Adapter<FinanceViewHolder>() {
@@ -20,15 +20,15 @@ class MainScreenAdapter: RecyclerView.Adapter<FinanceViewHolder>() {
         override fun bind(finance: Finance) = with(binding) {
             if (finance !is Wallet) return
             walltetName.text = finance.walletName
-            moneyLeft.text = finance.moneyLeft.toString()
+            moneyLeft.text = finance.moneyLeft.toString() + " Руб"
         }
     }
 
     class MoneyAmountViewHolder(
-        private val binding: MoneyAmountBinding
+        private val binding: SalaryMoneySpentItemBinding
     ): FinanceViewHolder(binding.root) {
         override fun bind(finance: Finance) = with(binding) {
-            if (finance !is Money) return
+            if (finance !is SalaryAndSpent) return
             salary.text = finance.salary.toString()
             moneySpent.text = finance.moneySpent.toString()
         }
@@ -38,7 +38,7 @@ class MainScreenAdapter: RecyclerView.Adapter<FinanceViewHolder>() {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         if (viewType == MONEY_VIEW_TYPE) {
-            return MoneyAmountViewHolder(MoneyAmountBinding.inflate(
+            return MoneyAmountViewHolder(SalaryMoneySpentItemBinding.inflate(
                 inflater,
                 parent,
                 false
@@ -60,7 +60,7 @@ class MainScreenAdapter: RecyclerView.Adapter<FinanceViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (list[position] is Money) {
+        if (list[position] is SalaryAndSpent) {
             return MONEY_VIEW_TYPE
         } else {
             return WALLET_VIEW_TYPE

@@ -3,4 +3,13 @@
     <string name="salary_text">Денег заработано:</string>
     <string name="money_spent_text">Денег потрачено:</string>
     <string name="add_purchase_text">Добавить покупку</string>
+    <string name="show_purchase_text">Посмотреть покупки</string>
+    <string name="money_spent_base_text">0 Руб.</string>
+    <string name="first_wallet_name">Неотложенные расходы</string>
+    <string name="second_wallet_name">Благосостояние</string>
+    <string name="third_wallet_name">Развлечения</string>
+    <string name="fourth_wallet_name">Образование</string>
+    <string name="fifth_wallet_name">Свободные расходы</string>
+    <string name="input_hint_text">Введите вашу зарплату</string>
+    <string name="confirm_button_text">Готово</string>
 </resources>
