@@ -1,4 +1,4 @@
-package com.example.financehelper.presenter.main_package
+package com.example.financehelper.presenter.main_package.main_fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +10,23 @@ import com.example.financehelper.data.model.Wallet
 import com.example.financehelper.databinding.SalaryMoneySpentItemBinding
 import com.example.financehelper.databinding.WalletItemBinding
 
-class MainScreenAdapter: RecyclerView.Adapter<FinanceViewHolder>() {
+class MainScreenAdapter(
+    private val onAddClick: (Wallet) -> Unit,
+): RecyclerView.Adapter<FinanceViewHolder>() {
 
     private val list = mutableListOf<Finance>()
 
     class WalletViewHolder(
-        private val binding: WalletItemBinding
+        private val binding: WalletItemBinding,
+        private val onAddClick: (Wallet) -> Unit,
     ): FinanceViewHolder(binding.root) {
         override fun bind(finance: Finance) = with(binding) {
             if (finance !is Wallet) return
             walltetName.text = finance.walletName
             moneyLeft.text = finance.moneyLeft.toString() + " Руб"
+            addPurchaseButton.setOnClickListener {
+                onAddClick(finance)
+            }
         }
     }
 
@@ -48,7 +54,7 @@ class MainScreenAdapter: RecyclerView.Adapter<FinanceViewHolder>() {
                 inflater,
                 parent,
                 false
-            ))
+            ), onAddClick)
         }
     }
 

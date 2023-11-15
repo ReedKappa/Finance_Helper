@@ -1,4 +1,4 @@
-package com.example.financehelper.presenter.main_package
+package com.example.financehelper.presenter.main_package.main_fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.financehelper.data.model.Finance
 import com.example.financehelper.data.model.SalaryAndSpent
-import com.example.financehelper.data.model.Wallet
 import com.example.financehelper.domain.GetSalaryUseCase
 import com.example.financehelper.domain.GetWalletNamesUseCase
 import kotlinx.coroutines.launch

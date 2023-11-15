@@ -1,13 +1,17 @@
-package com.example.financehelper.presenter.main_package
+package com.example.financehelper.presenter.main_package.main_fragment
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.financehelper.R
+import com.example.financehelper.data.model.Finance
+import com.example.financehelper.data.model.Wallet
 import com.example.financehelper.databinding.FragmentMainPageBinding
 import com.example.financehelper.di.ViewModelFactory
 import com.example.financehelper.di.appComponent
@@ -20,7 +24,7 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val adapter = MainScreenAdapter()
+    private val adapter = MainScreenAdapter(::onAddClick)
 
     private val viewModel: MainViewModel by viewModels() {viewModelFactory}
 
@@ -41,5 +45,10 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
     private fun initRecycler() = with(binding.walletRecycler) {
         layoutManager = LinearLayoutManager(requireContext())
         adapter = this@MainFragment.adapter
+    }
+
+    private fun onAddClick(wallet: Wallet) {
+        val direction = MainFragmentDirections.actionMainFragmentToAddPurchaseFragment(wallet.walletId)
+        findNavController().navigate(direction)
     }
 }

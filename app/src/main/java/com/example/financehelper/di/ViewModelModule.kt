@@ -2,7 +2,8 @@ package com.example.financehelper.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.financehelper.presenter.main_package.MainViewModel
+import com.example.financehelper.presenter.main_package.add_purchase_fragment.AddPurchaseViewModel
+import com.example.financehelper.presenter.main_package.main_fragment.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -16,5 +17,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel) : ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddPurchaseViewModel::class)
+    abstract fun bindAddPurchaseViewModel(viewModel: AddPurchaseViewModel) : ViewModel
 
 }
