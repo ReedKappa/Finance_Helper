@@ -24,7 +24,7 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val adapter = MainScreenAdapter(::onAddClick)
+    private val adapter = MainScreenAdapter(::onAddClick, ::onShowClick)
 
     private val viewModel: MainViewModel by viewModels() {viewModelFactory}
 
@@ -49,6 +49,11 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
 
     private fun onAddClick(wallet: Wallet) {
         val direction = MainFragmentDirections.actionMainFragmentToAddPurchaseFragment(wallet.walletId)
+        findNavController().navigate(direction)
+    }
+
+    private fun onShowClick(wallet: Wallet) {
+        val direction = MainFragmentDirections.actionMainFragmentToShowPurchasesFragment(wallet.walletId)
         findNavController().navigate(direction)
     }
 }

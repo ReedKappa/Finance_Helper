@@ -12,6 +12,7 @@ import com.example.financehelper.databinding.WalletItemBinding
 
 class MainScreenAdapter(
     private val onAddClick: (Wallet) -> Unit,
+    private val onShowClick: (Wallet) -> Unit,
 ): RecyclerView.Adapter<FinanceViewHolder>() {
 
     private val list = mutableListOf<Finance>()
@@ -19,13 +20,17 @@ class MainScreenAdapter(
     class WalletViewHolder(
         private val binding: WalletItemBinding,
         private val onAddClick: (Wallet) -> Unit,
+        private val onShowClick: (Wallet) -> Unit,
     ): FinanceViewHolder(binding.root) {
         override fun bind(finance: Finance) = with(binding) {
             if (finance !is Wallet) return
             walltetName.text = finance.walletName
-            moneyLeft.text = finance.moneyLeft.toString() + " Руб"
+            moneyLeft.text = finance.moneyLeft.toString() + " Руб."
             addPurchaseButton.setOnClickListener {
                 onAddClick(finance)
+            }
+            showPurchasesButton.setOnClickListener {
+                onShowClick(finance)
             }
         }
     }
@@ -35,8 +40,8 @@ class MainScreenAdapter(
     ): FinanceViewHolder(binding.root) {
         override fun bind(finance: Finance) = with(binding) {
             if (finance !is SalaryAndSpent) return
-            salary.text = finance.salary.toString()
-            moneySpent.text = finance.moneySpent.toString()
+            salary.text = finance.salary.toString() + " Руб."
+            moneySpent.text = finance.moneySpent.toString() + " Руб."
         }
     }
 
@@ -54,7 +59,7 @@ class MainScreenAdapter(
                 inflater,
                 parent,
                 false
-            ), onAddClick)
+            ), onAddClick, onShowClick)
         }
     }
 

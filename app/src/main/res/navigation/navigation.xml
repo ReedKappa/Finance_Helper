@@ -18,11 +18,32 @@
                 android:defaultValue="-1"/>
 
         </action>
+        <action
+            android:id="@+id/action_mainFragment_to_showPurchasesFragment"
+            app:destination="@id/showPurchasesFragment">
+
+            <argument
+                android:name="wallet_id"
+                app:argType="integer"
+                android:defaultValue="-1"/>
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/addPurchaseFragment"
         android:name="com.example.financehelper.presenter.main_package.add_purchase_fragment.AddPurchaseFragment"
         android:label="AddPurchaseFragment">
+
+        <argument
+            android:name="wallet_id"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/showPurchasesFragment"
+        android:name="com.example.financehelper.presenter.main_package.show_purchase_fragment.ShowPurchasesFragment"
+        android:label="ShowPurchasesFragment">
 
         <argument
             android:name="wallet_id"
