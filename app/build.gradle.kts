@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -62,4 +63,9 @@ dependencies {
 
     //vbpd
     implementation ("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+
+    //Room DB
+    val room_version = "2.5.0"
+    implementation("androidx.room:room-ktx:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
 }

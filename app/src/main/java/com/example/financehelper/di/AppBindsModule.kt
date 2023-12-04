@@ -1,5 +1,8 @@
 package com.example.financehelper.di
 
+import android.app.Application
+import android.content.Context
+import com.example.financehelper.FinanceHelperApplication
 import com.example.financehelper.data.repository.FinanceRepository
 import com.example.financehelper.data.repository.FinanceRepositoryImpl
 import com.example.financehelper.domain.AddPurchaseUseCase
@@ -12,12 +15,14 @@ import com.example.financehelper.domain.GetWalletNamesUseCase
 import com.example.financehelper.domain.GetWalletNamesUseCaseImpl
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
 @Module
 interface AppBindsModule {
 
     @Binds
+    @Singleton
     fun bindFinanceRepository(repositoryImpl: FinanceRepositoryImpl): FinanceRepository
 
     @Binds
@@ -31,4 +36,10 @@ interface AppBindsModule {
 
     @Binds
     fun bindGetPurchasesUseCase(useCase: GetPurchasesUseCaseImpl): GetPurchasesUseCase
+
+    companion object {
+        @Provides
+        fun provideContext(app: Application): Context =
+            app.applicationContext
+    }
 }
