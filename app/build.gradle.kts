@@ -62,4 +62,7 @@ dependencies {
 
     //vbpd
     implementation ("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+
+    //Material Design
+    implementation ("com.google.android.material:material:1.2.0-alpha03")
 }

@@ -5,42 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/white"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="60dp"
+    android:layout_marginTop="20dp"
     app:cardElevation="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="98dp"
+        android:divider="@drawable/wallet"
+        android:padding="20dp"
+        android:showDividers="middle">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/walltet_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="кошелек важных вещей" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/show_purchases_button"
+            android:textSize="14dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/walltet_name"
-            app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/show_purchase_text"
-            android:textColor="@color/materialtext_button_color"/>
+            android:textColor="#2FA125"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/walltet_name" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/add_purchase_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/materialtext_button_color"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:textSize="14dp"
+            android:text="@string/add_purchase_text"
+            android:textColor="#2FA125"
             app:layout_constraintStart_toStartOf="@id/walltet_name"
-            app:layout_constraintTop_toBottomOf="@id/walltet_name"
-            android:text="@string/add_purchase_text" />
+            app:layout_constraintTop_toBottomOf="@id/walltet_name" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/money_left"
+            android:textSize="14dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,26 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2FA125"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/salary_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="297dp"
+        android:layout_height="80dp"
+        android:text="Для продолжения укажите ваш доход"
+        android:textColor="#FFFFFF"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
-        android:hint="@string/input_hint_text"/>
+        tools:layout_editor_absoluteY="69dp" />
+
 
     <Button
         android:id="@+id/confirm_button"
+        android:layout_width="256dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#70AA6B"
+        android:textSize="20dp"
+        android:text="@string/confirm_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="41dp"
+        android:layout_height="43dp"
+        app:srcCompat="@drawable/mainbackbutton"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="10dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/salary_input"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="202dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_button"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/confirm_button_text"/>
+        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.748"
+        app:srcCompat="@drawable/letter" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="com.example.financehelper.presenter.main_package.main_fragment.MainFragment"
+        android:layout_width="350dp"
+        android:layout_height="61dp"
+        android:background="@drawable/roudedstyle"
+        tools:layout_editor_absoluteX="16dp"
+
+        tools:layout_editor_absoluteY="242dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+
+        android:id="@+id/salary_input"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:hint="@string/input_hint_text"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.45" />
+    />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

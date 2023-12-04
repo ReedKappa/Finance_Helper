@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#2FA125">
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="com.example.financehelper.presenter.main_package.main_fragment.MainFragment"
+        android:layout_width="350dp"
+        android:layout_height="61dp"
+        android:background="@drawable/roudedstyle"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="195dp"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/welcome_text_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Добро пожаловать!"
+        android:textColor="#FFFFFF"
+        android:textSize="32dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Добро пожаловать"/>
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="92dp"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/salary_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/welcome_text_id"
+        android:layout_width="336dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="72dp"
+        android:hint="Введите вашу зарплату"
         app:layout_constraintStart_toStartOf="parent"
-        android:hint="Введите вашу зарплату"/>
+        app:layout_constraintTop_toBottomOf="@id/welcome_text_id" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_done"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#70AA6B"
+        android:text="Готово"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Готово"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
