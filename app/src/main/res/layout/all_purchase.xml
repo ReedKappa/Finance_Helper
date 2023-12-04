@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2FA125"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Все покупки"
+        android:textColor="#FFFFFF"
+        android:textSize="36dp"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="56dp"
+        android:layout_height="53dp"
+        app:srcCompat="@drawable/remove_bg_ai_1700682429997__1__1"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="348dp"
+        android:layout_height="58dp"
+        android:background="@drawable/roudedstyle"
+
+        android:padding="16dp"
+
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="232dp">
+
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:id="@+id/purchase_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:maxLength="100"
+            android:maxLines="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Седушка" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/purchase_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5000 Руб." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="348dp"
+        android:layout_height="58dp"
+        android:background="@drawable/roudedstyle"
+
+        android:padding="16dp"
+
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="393dp">
+
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:id="@+id/purchase_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:maxLength="100"
+            android:maxLines="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Водка" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/purchase_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="20000 Руб." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="348dp"
+        android:layout_height="58dp"
+        android:background="@drawable/roudedstyle"
+
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="16dp"
+
+        tools:layout_editor_absoluteY="151dp">
+
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:id="@+id/purchase_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:maxLength="100"
+            android:maxLines="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Велосипед" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/purchase_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="16000 Руб." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="348dp"
+        android:layout_height="58dp"
+        android:background="@drawable/roudedstyle"
+
+        android:padding="16dp"
+
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="472dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="348dp"
+            android:layout_height="58dp"
+            android:background="@drawable/roudedstyle"
+
+            android:padding="16dp"
+
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="469dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="348dp"
+                android:layout_height="58dp"
+                android:background="@drawable/roudedstyle"
+
+                android:padding="16dp"
+
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="469dp">
+
+
+                <com.google.android.material.textview.MaterialTextView
+
+                    android:id="@+id/purchase_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="200dp"
+                    android:maxLength="100"
+                    android:maxLines="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Торт" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/purchase_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1500 Руб." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+
+                android:id="@+id/purchase_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+                android:maxLength="100"
+                android:maxLines="2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Торт" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/purchase_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1500 Руб." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="348dp"
+            android:layout_height="58dp"
+            android:background="@drawable/roudedstyle"
+
+            android:padding="16dp"
+
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="469dp">
+
+
+            <com.google.android.material.textview.MaterialTextView
+
+                android:id="@+id/purchase_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+                android:maxLength="100"
+                android:maxLines="2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Торт" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/purchase_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1500 Руб." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:id="@+id/purchase_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:maxLength="100"
+            android:maxLines="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Торт" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/purchase_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1500 Руб." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="348dp"
+        android:layout_height="58dp"
+        android:background="@drawable/roudedstyle"
+
+        android:padding="16dp"
+
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="314dp">
+
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:id="@+id/purchase_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:maxLength="100"
+            android:maxLines="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Пиво" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/purchase_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100000 Руб." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
