@@ -1,22 +1,34 @@
 package com.example.financehelper.data.repository
 
-import android.util.Log
+import com.example.financehelper.data.db.PurchaseDAO
 import com.example.financehelper.data.model.Purchase
 import com.example.financehelper.data.model.Wallet
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import javax.inject.Singleton
 
 interface FinanceRepository {
     suspend fun getWalletNames(): Result<List<Wallet>?>
     suspend fun getSalary(): Result<Int?>
-
-    suspend fun addPurchase(id: Int, purchaseName: String, purchaseCost: Double): Result<Unit?>
-
-    suspend fun getPurchases(id: Int): Result<MutableList<Purchase>?>
+    fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>>
+    suspend fun upsertPurchase(purchase: Purchase)
 }
 
 class FinanceRepositoryImpl @Inject constructor(
+    private val dao: PurchaseDAO,
 ) : FinanceRepository {
+
+
+
+    override fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>> {
+        return dao.getPurchasesOrdered(walletId).map {
+            it.map { it.toPurchase() }
+        }
+    }
+
+    override suspend fun upsertPurchase(purchase: Purchase) {
+        dao.upsertPurchase(purchase.toPurchaseEntity())
+    }
 
     val salary = 80000
 
@@ -27,29 +39,6 @@ class FinanceRepositoryImpl @Inject constructor(
 
     override suspend fun getSalary(): Result<Int?> {
         return Result.success(salary)
-    }
-
-    override suspend fun addPurchase(
-        id: Int,
-        purchaseName: String,
-        purchaseCost: Double
-    ): Result<Unit?> {
-        val wallet = namesSource.first {
-            it.walletId == id
-        }
-        val currentList = wallet.purchaseList
-        currentList.add(Purchase(purchaseName, purchaseCost))
-        return Result.success(Unit)
-    }
-
-    override suspend fun getPurchases(id: Int): Result<MutableList<Purchase>?> {
-        val wallet = namesSource.first() {
-            it.walletId == id
-        }
-        val currentList = wallet.purchaseList
-        Log.d(this::class.simpleName, wallet.toString())
-        Log.d(this::class.simpleName, currentList.toString())
-        return Result.success(currentList)
     }
 
     companion object {

@@ -37,11 +37,16 @@ class ShowPurchasesFragment: Fragment(R.layout.fragment_see_purchases) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
+        with(binding.purchasesRecycler) {
+            adapter = this@ShowPurchasesFragment.adapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+
         viewModel.purchases.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-        viewModel.getPurchasesList(args.walletId)
+
+        viewModel.getPurchasesOrdered(args.walletId)
     }
 
     private fun initRecycler() = with(binding.purchasesRecycler) {

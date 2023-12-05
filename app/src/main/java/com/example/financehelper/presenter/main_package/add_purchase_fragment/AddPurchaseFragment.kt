@@ -10,12 +10,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.financehelper.R
+import com.example.financehelper.data.model.Purchase
 import com.example.financehelper.databinding.FragmentAddPurchaseBinding
-import com.example.financehelper.databinding.FragmentMainPageBinding
 import com.example.financehelper.di.ViewModelFactory
 import com.example.financehelper.di.appComponent
-import com.example.financehelper.presenter.main_package.main_fragment.MainScreenAdapter
-import com.example.financehelper.presenter.main_package.main_fragment.MainViewModel
 import javax.inject.Inject
 
 class AddPurchaseFragment: Fragment(R.layout.fragment_add_purchase) {
@@ -44,8 +42,20 @@ class AddPurchaseFragment: Fragment(R.layout.fragment_add_purchase) {
             }
         }
         binding.buttonConfirm.setOnClickListener {
-            viewModel.addPurchase(args.walletId, binding.inputPurchaseName.text.toString(), binding.inputPurchaseCost.text.toString().toDouble())
-
+            if (!addPurchase()) {
+                Toast.makeText(requireContext(), "Ошибка при парсинге дабла", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+    private fun addPurchase(): Boolean {
+        viewModel.upsertPurchase(
+            Purchase(
+                purchaseName = binding.inputPurchaseName.text.toString(),
+                purchaseCost = binding.inputPurchaseCost.text.toString().toDoubleOrNull() ?: return false,
+                walletId = args.walletId
+            )
+        )
+        return true
     }
 }

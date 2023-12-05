@@ -2,14 +2,14 @@ package com.example.financehelper.presenter.main_package.show_purchase_fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.example.financehelper.data.model.Purchase
 import com.example.financehelper.databinding.PurchaseItemBinding
 
-class ShowPurchasesAdapter: RecyclerView.Adapter<ShowPurchasesAdapter.PurchaseViewHolder>() {
-
-    private val list = mutableListOf<Purchase>()
+class ShowPurchasesAdapter: ListAdapter<Purchase, ShowPurchasesAdapter.PurchaseViewHolder>(PurchaseDiffUtil()) {
 
     class PurchaseViewHolder(
         private val binding: PurchaseItemBinding
@@ -23,25 +23,20 @@ class ShowPurchasesAdapter: RecyclerView.Adapter<ShowPurchasesAdapter.PurchaseVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PurchaseViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        return PurchaseViewHolder(PurchaseItemBinding.inflate(
-                inflater,
-                parent,
-                false
-            ))
+        val binding = PurchaseItemBinding.inflate(inflater, parent, false)
+        return PurchaseViewHolder(binding)
     }
-
-    override fun getItemCount(): Int =
-        list.size
 
     override fun onBindViewHolder(holder: PurchaseViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(getItem(position))
     }
 
-    fun submitList(list: List<Purchase>) {
-        with (this.list) {
-            clear()
-            addAll(list)
-        }
-        notifyDataSetChanged()
+    class PurchaseDiffUtil: DiffUtil.ItemCallback<Purchase>() {
+        override fun areItemsTheSame(oldItem: Purchase, newItem: Purchase): Boolean =
+            oldItem == newItem
+
+        override fun areContentsTheSame(oldItem: Purchase, newItem: Purchase): Boolean =
+            oldItem == newItem
+
     }
 }

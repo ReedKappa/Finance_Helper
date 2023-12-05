@@ -1,5 +1,6 @@
 package com.example.financehelper.di
 
+import android.app.Application
 import com.example.financehelper.FinanceHelperApplication
 import com.example.financehelper.presenter.main_package.add_purchase_fragment.AddPurchaseFragment
 import com.example.financehelper.presenter.main_package.main_fragment.MainFragment
@@ -23,7 +24,7 @@ interface AppComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(app: FinanceHelperApplication): Builder
+        fun application(app: Application): Builder
 
         fun build(): AppComponent
     }

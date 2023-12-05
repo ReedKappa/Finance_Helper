@@ -5,14 +5,14 @@ import android.content.Context
 import com.example.financehelper.FinanceHelperApplication
 import com.example.financehelper.data.repository.FinanceRepository
 import com.example.financehelper.data.repository.FinanceRepositoryImpl
-import com.example.financehelper.domain.AddPurchaseUseCase
-import com.example.financehelper.domain.AddPurchaseUseCaseImpl
-import com.example.financehelper.domain.GetPurchasesUseCase
-import com.example.financehelper.domain.GetPurchasesUseCaseImpl
+import com.example.financehelper.domain.GetPurchasesOrderedUseCase
+import com.example.financehelper.domain.GetPurchasesOrderedUseCaseImpl
 import com.example.financehelper.domain.GetSalaryUseCase
 import com.example.financehelper.domain.GetSalaryUseCaseImpl
 import com.example.financehelper.domain.GetWalletNamesUseCase
 import com.example.financehelper.domain.GetWalletNamesUseCaseImpl
+import com.example.financehelper.domain.UpsertPurchaseUseCase
+import com.example.financehelper.domain.UpsertPurchaseUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,6 +20,8 @@ import javax.inject.Singleton
 
 @Module
 interface AppBindsModule {
+
+
 
     @Binds
     @Singleton
@@ -32,10 +34,10 @@ interface AppBindsModule {
     fun bindGetSalaryUseCase(useCase: GetSalaryUseCaseImpl): GetSalaryUseCase
 
     @Binds
-    fun bindAddPurchaseUseCase(useCase: AddPurchaseUseCaseImpl): AddPurchaseUseCase
+    fun bindUpsertPurchaseUseCase(useCase: UpsertPurchaseUseCaseImpl): UpsertPurchaseUseCase
 
     @Binds
-    fun bindGetPurchasesUseCase(useCase: GetPurchasesUseCaseImpl): GetPurchasesUseCase
+    fun bindGetPurchasesOrderedUseCase(useCase: GetPurchasesOrderedUseCaseImpl): GetPurchasesOrderedUseCase
 
     companion object {
         @Provides
