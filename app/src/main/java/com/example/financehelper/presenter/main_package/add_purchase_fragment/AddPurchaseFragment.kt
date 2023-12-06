@@ -49,6 +49,7 @@ class AddPurchaseFragment: Fragment(R.layout.fragment_add_purchase) {
     }
 
     private fun addPurchase(): Boolean {
+
         viewModel.upsertPurchase(
             Purchase(
                 purchaseName = binding.inputPurchaseName.text.toString(),

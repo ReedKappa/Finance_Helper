@@ -5,6 +5,10 @@ import android.content.Context
 import com.example.financehelper.FinanceHelperApplication
 import com.example.financehelper.data.repository.FinanceRepository
 import com.example.financehelper.data.repository.FinanceRepositoryImpl
+import com.example.financehelper.domain.GetAllSpendingsUseCase
+import com.example.financehelper.domain.GetAllSpendingsUseCaseImpl
+import com.example.financehelper.domain.GetCertainWalletSPendingsUseCaseImpl
+import com.example.financehelper.domain.GetCertainWalletSpendingsUseCase
 import com.example.financehelper.domain.GetPurchasesOrderedUseCase
 import com.example.financehelper.domain.GetPurchasesOrderedUseCaseImpl
 import com.example.financehelper.domain.GetSalaryUseCase
@@ -38,6 +42,12 @@ interface AppBindsModule {
 
     @Binds
     fun bindGetPurchasesOrderedUseCase(useCase: GetPurchasesOrderedUseCaseImpl): GetPurchasesOrderedUseCase
+
+    @Binds
+    fun bindGetAllSpendingsUseCase(useCase: GetAllSpendingsUseCaseImpl): GetAllSpendingsUseCase
+
+    @Binds
+    fun bindGetCertainWalletSpendingsUseCase(useCase: GetCertainWalletSPendingsUseCaseImpl): GetCertainWalletSpendingsUseCase
 
     companion object {
         @Provides

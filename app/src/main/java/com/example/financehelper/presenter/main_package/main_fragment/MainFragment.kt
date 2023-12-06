@@ -39,6 +39,9 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
         viewModel.walletNames.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+        viewModel.totalSpent.observe(viewLifecycleOwner) {
+
+        }
         viewModel.getWalletNames()
     }
 

@@ -12,12 +12,19 @@ interface FinanceRepository {
     suspend fun getSalary(): Result<Int?>
     fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>>
     suspend fun upsertPurchase(purchase: Purchase)
+    fun getCertainWalletSpendings(walletId: Int): Flow<List<Double>>
+    val getAllSpendings: Flow<List<Double>>
 }
 
 class FinanceRepositoryImpl @Inject constructor(
     private val dao: PurchaseDAO,
 ) : FinanceRepository {
 
+    override fun getCertainWalletSpendings(walletId: Int): Flow<List<Double>> =
+        dao.getCertainWalletSpendings(walletId)
+
+    override val getAllSpendings: Flow<List<Double>>
+        get() = dao.getAllSpendings()
 
 
     override fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>> {
