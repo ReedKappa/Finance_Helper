@@ -1,9 +1,15 @@
 package com.example.financehelper.data.model
 
+import com.example.financehelper.data.db.model.WalletEntity
+
 data class Wallet(
-    val walletId: Int,
+    val id: Int,
     val walletName: String,
-    val moneyLeft: Int,
+    val moneyLeft: Double,
     val percents: Float,
-    val purchaseList: MutableList<Purchase>
-): Finance
+): Finance {
+    fun toWalletEntity(): WalletEntity =
+        WalletEntity(
+            id, walletName, moneyLeft, percents
+        )
+}

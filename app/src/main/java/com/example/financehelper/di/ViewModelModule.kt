@@ -3,7 +3,9 @@ package com.example.financehelper.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.financehelper.presenter.main_package.add_purchase_fragment.AddPurchaseViewModel
+import com.example.financehelper.presenter.main_package.add_salary_package.AddSalaryViewModel
 import com.example.financehelper.presenter.main_package.main_fragment.MainViewModel
+import com.example.financehelper.presenter.main_package.root_fragment.RootViewModel
 import com.example.financehelper.presenter.main_package.show_purchase_fragment.ShowPurchasesViewModel
 import dagger.Binds
 import dagger.Module
@@ -29,5 +31,15 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(ShowPurchasesViewModel::class)
     fun bindShowPurchaseViewModel(viewModel: ShowPurchasesViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddSalaryViewModel::class)
+    fun bindAddSalaryViewModel(viewModel: AddSalaryViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RootViewModel::class)
+    fun bindRootViewModel(viewModel: RootViewModel): ViewModel
 
 }

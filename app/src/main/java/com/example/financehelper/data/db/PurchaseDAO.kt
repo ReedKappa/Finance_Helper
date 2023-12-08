@@ -2,21 +2,34 @@ package com.example.financehelper.data.db
 
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Upsert
 import com.example.financehelper.data.db.model.PurchaseEntity
+import com.example.financehelper.data.db.model.SalaryAndSpentEntity
+import com.example.financehelper.data.db.model.WalletEntity
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 @Dao
-interface PurchaseDAO {
+abstract class PurchaseDAO {
+
+
+
+    @Inject
+    lateinit var walletDAO: WalletDAO
+    @Inject
+    lateinit var salaryDAO: SalaryDAO
+
     @Upsert
-    suspend fun upsertPurchase(purchase: PurchaseEntity)
+    abstract suspend fun upsertPurchase(purchase: PurchaseEntity)
 
     @Query("SELECT * FROM purchases WHERE walletId=:walletId")
-    fun getPurchasesOrdered(walletId: Int): Flow<List<PurchaseEntity>>
+    abstract fun getPurchasesOrdered(walletId: Int): Flow<List<PurchaseEntity>>
 
-    @Query("SELECT purchaseCost FROM purchases WHERE walletId=:walletId")
-    fun getCertainWalletSpendings(walletId: Int): Flow<List<Double>>
-
-    @Query("SELECT purchaseCost FROM purchases")
-    fun getAllSpendings(): Flow<List<Double>>
+    @Transaction
+    open suspend fun changeMoneyValues(purchase: PurchaseEntity, walletEntity: WalletEntity, salaryAndSpentEntity: SalaryAndSpentEntity) {
+        upsertPurchase(purchase)
+        walletDAO.upsertWallet(walletEntity.copy(moneyLeft = -purchase.purchaseCost))
+        salaryDAO.upsertSalary(salaryAndSpentEntity.copy(moneySpent = +purchase.purchaseCost))
+    }
 }

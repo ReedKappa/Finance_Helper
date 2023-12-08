@@ -12,7 +12,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Добро пожаловать"/>
+        android:text="@string/welcome_text"/>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/salary_input"
@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/welcome_text_id"
         app:layout_constraintStart_toStartOf="parent"
-        android:hint="Введите вашу зарплату"/>
+        android:inputType="number"
+        android:hint="@string/input_salary_hint_text"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_done"
@@ -28,6 +29,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Готово"/>
+        android:text="@string/ready_button_text"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

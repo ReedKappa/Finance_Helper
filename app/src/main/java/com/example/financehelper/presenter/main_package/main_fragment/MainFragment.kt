@@ -36,13 +36,22 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initRecycler()
         super.onViewCreated(view, savedInstanceState)
-        viewModel.walletNames.observe(viewLifecycleOwner) {
+
+        viewModel.financeList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-        viewModel.totalSpent.observe(viewLifecycleOwner) {
 
-        }
-        viewModel.getWalletNames()
+        viewModel.getSalaryAndWallets()
+
+//
+//        viewModel.getWallets()
+//        viewModel.getSalary()
+//        viewModel.salary.observe(viewLifecycleOwner) {
+//            adapter.submitList(listOf(it))
+//        }
+//        viewModel.wallets.observe(viewLifecycleOwner) {
+//            adapter.submitList(it)
+//        }
     }
 
     private fun initRecycler() = with(binding.walletRecycler) {
@@ -51,12 +60,12 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
     }
 
     private fun onAddClick(wallet: Wallet) {
-        val direction = MainFragmentDirections.actionMainFragmentToAddPurchaseFragment(wallet.walletId)
+        val direction = MainFragmentDirections.actionMainFragmentToAddPurchaseFragment(wallet.id)
         findNavController().navigate(direction)
     }
 
     private fun onShowClick(wallet: Wallet) {
-        val direction = MainFragmentDirections.actionMainFragmentToShowPurchasesFragment(wallet.walletId)
+        val direction = MainFragmentDirections.actionMainFragmentToShowPurchasesFragment(wallet.id)
         findNavController().navigate(direction)
     }
 }

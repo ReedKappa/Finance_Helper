@@ -50,4 +50,12 @@
             android:defaultValue="-1"/>
 
     </fragment>
+    <fragment
+        android:id="@+id/addSalaryFragment"
+        android:name="com.example.financehelper.presenter.main_package.add_salary_package.AddSalaryFragment"
+        android:label="AddSalaryFragment" >
+        <action
+            android:id="@+id/action_addSalaryFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

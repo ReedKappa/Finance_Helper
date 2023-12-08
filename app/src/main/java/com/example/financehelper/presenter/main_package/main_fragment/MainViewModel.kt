@@ -6,77 +6,61 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.financehelper.data.model.Finance
 import com.example.financehelper.data.model.SalaryAndSpent
-import com.example.financehelper.data.repository.FinanceRepository
-import com.example.financehelper.domain.GetAllSpendingsUseCase
-import com.example.financehelper.domain.GetCertainWalletSpendingsUseCase
+import com.example.financehelper.data.model.Wallet
 import com.example.financehelper.domain.GetSalaryUseCase
-import com.example.financehelper.domain.GetWalletNamesUseCase
-import kotlinx.coroutines.flow.collect
+import com.example.financehelper.domain.GetWalletsOrderedUseCase
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val getWalletNamesUseCase: GetWalletNamesUseCase,
     private val getSalaryUseCase: GetSalaryUseCase,
-    private val getAllSpendingsUseCase: GetAllSpendingsUseCase,
-    private val getCertainWalletSpendingsUseCase: GetCertainWalletSpendingsUseCase,
+    private val getWalletsOrderedUseCase: GetWalletsOrderedUseCase,
 ): ViewModel() {
-    private val _walletNames = MutableLiveData<List<Finance>>()
-    val walletNames: LiveData<List<Finance>>
-        get() = _walletNames
 
-    private val _totalSpent = MutableLiveData<Double>()
-    val totalSpent: LiveData<Double>
-        get() = _totalSpent
+    private val _financeList = MutableLiveData<List<Finance>>()
+    val financeList: LiveData<List<Finance>>
+        get() = _financeList
 
-    private val _certainWalletSpent = MutableLiveData<List<Double>>()
-    val certainWalletSpent: LiveData<List<Double>>
-        get() = _certainWalletSpent
+//    private val _salary = MutableLiveData<SalaryAndSpent>()
+//    val salary: LiveData<SalaryAndSpent>
+//        get() = _salary
+//
+//    private val _wallets = MutableLiveData<List<Wallet>>()
+//    val wallets: LiveData<List<Wallet>>
+//        get() = _wallets
 
-    fun getWalletNames() {
+
+    fun getSalaryAndWallets() {
         viewModelScope.launch {
-            val walletNamesResult = getWalletNamesUseCase()
-            val salaryResult = getSalaryUseCase()
-            if (walletNamesResult.isSuccess && salaryResult.isSuccess) {
-                val salary = salaryResult.getOrNull()
-                val wallets = walletNamesResult.getOrNull()
-                wallets ?.let {
-                    val salaryObject = SalaryAndSpent(salary = salary)
-                    val resultList = mutableListOf<Finance>(
-                        salaryObject
-                    )
-                    resultList.addAll(wallets)
-                    _walletNames.postValue(resultList)
-                }
+            getSalaryUseCase().combine(
+                getWalletsOrderedUseCase()
+            ) { salaryFlow, walletsFlow ->
+                salaryFlow to walletsFlow
+            }.collect {
+                val result = mutableListOf<Finance>()
+                result.add(it.first)
+                result.addAll(it.second)
+                _financeList.postValue(
+                    result
+                )
             }
         }
     }
 
-    fun getAllSpendings() {
-        var total: Double = 0.0
-        viewModelScope.launch {
-            getAllSpendingsUseCase().collect() {
-                for (item in it) {
-                    total += item
-                }
-                _totalSpent.postValue(total)
-            }
-        }
-    }
-
-    fun getCertainSpendings() {
-        val total = mutableListOf<Double>()
-        var totalSpend: Double = 0.0
-        viewModelScope.launch {
-            for (i in 1..5) {
-                getCertainWalletSpendingsUseCase(i).collect() {
-                    for (item in it) {
-                        totalSpend += item
-                    }
-                    total.add(totalSpend)
-                    totalSpend = 0.0
-                }
-            }
-        }
-    }
+//    fun getSalary() {
+//        viewModelScope.launch {
+//            getSalaryUseCase().collect {
+//                _salary.postValue(it)
+//            }
+//        }
+//    }
+//
+//    fun getWallets() {
+//        viewModelScope.launch {
+//            getWalletsOrderedUseCase().collect {
+//                _wallets.postValue(it)
+//            }
+//        }
+//    }
 }

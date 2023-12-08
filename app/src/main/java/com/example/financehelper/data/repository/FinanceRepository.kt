@@ -1,89 +1,106 @@
 package com.example.financehelper.data.repository
 
 import com.example.financehelper.data.db.PurchaseDAO
+import com.example.financehelper.data.db.SalaryDAO
+import com.example.financehelper.data.db.WalletDAO
 import com.example.financehelper.data.model.Purchase
+import com.example.financehelper.data.model.SalaryAndSpent
 import com.example.financehelper.data.model.Wallet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 interface FinanceRepository {
-    suspend fun getWalletNames(): Result<List<Wallet>?>
-    suspend fun getSalary(): Result<Int?>
     fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>>
     suspend fun upsertPurchase(purchase: Purchase)
-    fun getCertainWalletSpendings(walletId: Int): Flow<List<Double>>
-    val getAllSpendings: Flow<List<Double>>
+    suspend fun upsertWallet(wallet: Wallet)
+    suspend fun upsertSalary(salaryAndSpent: SalaryAndSpent)
+    suspend fun changeMoneyValues(purchase: Purchase, wallet: Wallet, salaryAndSpent: SalaryAndSpent)
+    val getSalary: Flow<SalaryAndSpent>
+    val getWalletsOrdered: Flow<List<Wallet>>
+
+    suspend fun isOnboardingRequired(): Flow<Boolean>
 }
 
 class FinanceRepositoryImpl @Inject constructor(
-    private val dao: PurchaseDAO,
+    private val purchaseDAO: PurchaseDAO,
+    private val walletDAO: WalletDAO,
+    private val salaryDAO: SalaryDAO,
 ) : FinanceRepository {
 
-    override fun getCertainWalletSpendings(walletId: Int): Flow<List<Double>> =
-        dao.getCertainWalletSpendings(walletId)
+    override val getSalary: Flow<SalaryAndSpent>
+        get() = salaryDAO.getSalaryFlow().map {
+            it.toSalaryAndSpent()
+        }
 
-    override val getAllSpendings: Flow<List<Double>>
-        get() = dao.getAllSpendings()
+    override val getWalletsOrdered: Flow<List<Wallet>>
+        get() = walletDAO.getAllWalletsOrdered().map {
+            it.map { it.toWallet() }
+        }
 
+    override suspend fun isOnboardingRequired(): Flow<Boolean> {
+        return salaryDAO.getSalaryFlow().map {
+            it == null
+        }
+    }
 
     override fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>> {
-        return dao.getPurchasesOrdered(walletId).map {
+        return purchaseDAO.getPurchasesOrdered(walletId).map {
             it.map { it.toPurchase() }
         }
     }
 
     override suspend fun upsertPurchase(purchase: Purchase) {
-        dao.upsertPurchase(purchase.toPurchaseEntity())
+        purchaseDAO.upsertPurchase(purchase.toPurchaseEntity())
     }
 
-    val salary = 80000
-
-
-    override suspend fun getWalletNames(): Result<List<Wallet>?> {
-        return Result.success(namesSource)
+    override suspend fun upsertWallet(wallet: Wallet) {
+        walletDAO.upsertWallet(wallet.toWalletEntity())
     }
 
-    override suspend fun getSalary(): Result<Int?> {
-        return Result.success(salary)
+    override suspend fun upsertSalary(salaryAndSpent: SalaryAndSpent) {
+        salaryDAO.upsertSalary(salaryAndSpent.toSalaryAndSpentEntity())
+    }
+
+    override suspend fun changeMoneyValues(
+        purchase: Purchase,
+        wallet: Wallet,
+        salaryAndSpent: SalaryAndSpent
+    ) {
+        purchaseDAO.changeMoneyValues(purchase.toPurchaseEntity(), wallet.toWalletEntity(), salaryAndSpent.toSalaryAndSpentEntity())
     }
 
     companion object {
         val namesSource = listOf<Wallet>(
             Wallet(
-                walletId = 1,
+                id = 1,
                 walletName = "Неотложенные расходы",
-                moneyLeft = 0,
+                moneyLeft = 0.0,
                 percents = 0.5f,
-                purchaseList = mutableListOf()
             ),
             Wallet(
-                walletId = 2,
+                id = 2,
                 walletName = "Благосостояние",
-                moneyLeft = 0,
+                moneyLeft = 0.0,
                 percents = 0.1f,
-                purchaseList = mutableListOf()
             ),
             Wallet(
-                walletId = 3,
+                id = 3,
                 walletName = "Развлечения",
-                moneyLeft = 0,
+                moneyLeft = 0.0,
                 percents = 0.1f,
-                purchaseList = mutableListOf()
             ),
             Wallet(
-                walletId = 4,
+                id = 4,
                 walletName = "Образование",
-                moneyLeft = 0,
+                moneyLeft = 0.0,
                 percents = 0.1f,
-                purchaseList = mutableListOf()
             ),
             Wallet(
-                walletId = 5,
+                id = 5,
                 walletName = "Свободные расходы",
-                moneyLeft = 0,
+                moneyLeft = 0.0,
                 percents = 0.1f,
-                purchaseList = mutableListOf()
             ),
         )
     }

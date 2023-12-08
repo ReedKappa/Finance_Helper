@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.financehelper.data.db.PurchaseDAO
 import com.example.financehelper.data.db.PurchaseDataBase
+import com.example.financehelper.data.db.SalaryDAO
+import com.example.financehelper.data.db.WalletDAO
 import dagger.Module
 import dagger.Provides
 
@@ -21,4 +23,12 @@ class DataBaseModule {
     @Provides
     fun providePurchaseDao(db: PurchaseDataBase): PurchaseDAO =
         db.purchaseDAO
+
+    @Provides
+    fun provideWalletsDao(db: PurchaseDataBase): WalletDAO =
+        db.WalletDAO
+
+    @Provides
+    fun provideSalaryDao(db: PurchaseDataBase): SalaryDAO =
+        db.salaryDAO
 }

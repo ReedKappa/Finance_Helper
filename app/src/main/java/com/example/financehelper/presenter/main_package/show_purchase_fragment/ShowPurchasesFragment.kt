@@ -3,7 +3,6 @@ package com.example.financehelper.presenter.main_package.show_purchase_fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -13,8 +12,6 @@ import com.example.financehelper.R
 import com.example.financehelper.databinding.FragmentSeePurchasesBinding
 import com.example.financehelper.di.ViewModelFactory
 import com.example.financehelper.di.appComponent
-import com.example.financehelper.presenter.main_package.add_purchase_fragment.AddPurchaseFragmentArgs
-import com.example.financehelper.presenter.main_package.add_purchase_fragment.AddPurchaseViewModel
 import javax.inject.Inject
 
 class ShowPurchasesFragment: Fragment(R.layout.fragment_see_purchases) {

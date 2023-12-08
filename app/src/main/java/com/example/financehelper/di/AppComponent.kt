@@ -3,7 +3,9 @@ package com.example.financehelper.di
 import android.app.Application
 import com.example.financehelper.FinanceHelperApplication
 import com.example.financehelper.presenter.main_package.add_purchase_fragment.AddPurchaseFragment
+import com.example.financehelper.presenter.main_package.add_salary_package.AddSalaryFragment
 import com.example.financehelper.presenter.main_package.main_fragment.MainFragment
+import com.example.financehelper.presenter.main_package.root_fragment.RootFragment
 import com.example.financehelper.presenter.main_package.show_purchase_fragment.ShowPurchasesFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -20,6 +22,8 @@ interface AppComponent {
     fun inject(fragment: MainFragment)
     fun inject(fragment: AddPurchaseFragment)
     fun inject(fragment: ShowPurchasesFragment)
+    fun inject(fragment: AddSalaryFragment)
+    fun inject(fragment: RootFragment)
 
     @Component.Builder
     interface Builder {
