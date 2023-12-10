@@ -42,16 +42,6 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
         }
 
         viewModel.getSalaryAndWallets()
-
-//
-//        viewModel.getWallets()
-//        viewModel.getSalary()
-//        viewModel.salary.observe(viewLifecycleOwner) {
-//            adapter.submitList(listOf(it))
-//        }
-//        viewModel.wallets.observe(viewLifecycleOwner) {
-//            adapter.submitList(it)
-//        }
     }
 
     private fun initRecycler() = with(binding.walletRecycler) {

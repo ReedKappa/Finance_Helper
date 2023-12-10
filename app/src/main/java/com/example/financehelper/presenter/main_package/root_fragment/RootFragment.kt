@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.financehelper.MainActivity
 import com.example.financehelper.R
 import com.example.financehelper.databinding.FragmentRootBinding
 import com.example.financehelper.di.ViewModelFactory
@@ -43,6 +44,14 @@ class RootFragment: Fragment(R.layout.fragment_root) {
 
             val navController = navHostFragment.navController
             navController.graph = graph
+
+            if (requireActivity() is MainActivity) {
+                (requireActivity() as MainActivity).onPressedBack = {
+                    navController.popBackStack()
+                }
+            }
+
+
         }
     }
 }

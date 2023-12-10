@@ -29,9 +29,9 @@ class AddSalaryFragment: Fragment(R.layout.fragment_add_salary) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonDone.setOnClickListener {
-            viewModel.upsertPurchase(binding.salaryInput.text.toString().toDouble())
-//            val direction = AddSalaryFragmentDirections.actionAddSalaryFragmentToMainFragment()
-            findNavController().popBackStack()
+            viewModel.upsertSalary(binding.salaryInput.text.toString().toDouble()) {
+                findNavController().popBackStack()
+            }
         }
     }
 }

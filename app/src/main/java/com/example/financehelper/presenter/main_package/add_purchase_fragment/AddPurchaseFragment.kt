@@ -55,7 +55,8 @@ class AddPurchaseFragment: Fragment(R.layout.fragment_add_purchase) {
                 purchaseName = binding.inputPurchaseName.text.toString(),
                 purchaseCost = binding.inputPurchaseCost.text.toString().toDoubleOrNull() ?: return false,
                 walletId = args.walletId
-            )
+            ),
+            args.walletId
         )
         return true
     }

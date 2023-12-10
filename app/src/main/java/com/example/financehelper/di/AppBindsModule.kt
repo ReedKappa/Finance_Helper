@@ -6,10 +6,16 @@ import com.example.financehelper.data.repository.FinanceRepository
 import com.example.financehelper.data.repository.FinanceRepositoryImpl
 import com.example.financehelper.domain.ChangeMoneyValuesUseCase
 import com.example.financehelper.domain.ChangeMoneyValuesUseCaseImpl
+import com.example.financehelper.domain.GetAllWalletsUseCase
+import com.example.financehelper.domain.GetAllWalletsUseCaseImpl
+import com.example.financehelper.domain.GetCertainWalletUseCase
+import com.example.financehelper.domain.GetCertainWalletUseCaseImpl
 import com.example.financehelper.domain.GetPurchasesOrderedUseCase
 import com.example.financehelper.domain.GetPurchasesOrderedUseCaseImpl
-import com.example.financehelper.domain.GetSalaryUSeCaseImpl
+import com.example.financehelper.domain.GetSalaryFlowUSeCaseImpl
+import com.example.financehelper.domain.GetSalaryFlowUseCase
 import com.example.financehelper.domain.GetSalaryUseCase
+import com.example.financehelper.domain.GetSalaryUseCaseImpl
 import com.example.financehelper.domain.GetWalletsOrderedUseCase
 import com.example.financehelper.domain.GetWalletsOrderedUseCaseImpl
 import com.example.financehelper.domain.IsOnboardingRequiredUSeCaseImpl
@@ -44,7 +50,7 @@ interface AppBindsModule {
     fun bindChangeMoneyValuesUseCase(useCase: ChangeMoneyValuesUseCaseImpl): ChangeMoneyValuesUseCase
 
     @Binds
-    fun bindGetSalaryUseCase(useCase: GetSalaryUSeCaseImpl): GetSalaryUseCase
+    fun bindGetSalaryFlowUseCase(useCase: GetSalaryFlowUSeCaseImpl): GetSalaryFlowUseCase
 
     @Binds
     fun bindGetWalletsOrderedUseCase(useCase: GetWalletsOrderedUseCaseImpl): GetWalletsOrderedUseCase
@@ -58,9 +64,23 @@ interface AppBindsModule {
     @Binds
     fun bindIsOnboardingRequiredUseCase(useCase: IsOnboardingRequiredUSeCaseImpl): IsOnboardingRequiredUseCase
 
+    @Binds
+    fun bindGetAllWalletsUseCase(useCase: GetAllWalletsUseCaseImpl): GetAllWalletsUseCase
+
+    @Binds
+    fun bindGetCertainWalletUseCase(useCase: GetCertainWalletUseCaseImpl): GetCertainWalletUseCase
+
+    @Binds
+    fun bindGetSalaryUseCase(useCase: GetSalaryUseCaseImpl): GetSalaryUseCase
+
     companion object {
         @Provides
         fun provideContext(app: Application): Context =
             app.applicationContext
+
+        @Provides
+        @Singleton
+        fun provideResourceProvider(context: Context) = ResourceProvider(context)
+
     }
 }

@@ -6,7 +6,7 @@ import com.example.financehelper.data.model.Wallet
 
 @Entity(tableName = "wallets")
 data class WalletEntity(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val walletName: String,
     val moneyLeft: Double,

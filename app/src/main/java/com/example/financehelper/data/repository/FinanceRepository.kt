@@ -1,11 +1,13 @@
 package com.example.financehelper.data.repository
 
+import com.example.financehelper.R
 import com.example.financehelper.data.db.PurchaseDAO
 import com.example.financehelper.data.db.SalaryDAO
 import com.example.financehelper.data.db.WalletDAO
 import com.example.financehelper.data.model.Purchase
 import com.example.financehelper.data.model.SalaryAndSpent
 import com.example.financehelper.data.model.Wallet
+import com.example.financehelper.di.ResourceProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -18,8 +20,10 @@ interface FinanceRepository {
     suspend fun changeMoneyValues(purchase: Purchase, wallet: Wallet, salaryAndSpent: SalaryAndSpent)
     val getSalary: Flow<SalaryAndSpent>
     val getWalletsOrdered: Flow<List<Wallet>>
-
     suspend fun isOnboardingRequired(): Flow<Boolean>
+    suspend fun getAllWallets(): List<Wallet>
+    suspend fun getCertainWallet(walletId: Int): Wallet
+    suspend fun getSalary(): SalaryAndSpent
 }
 
 class FinanceRepositoryImpl @Inject constructor(
@@ -44,6 +48,17 @@ class FinanceRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getAllWallets(): List<Wallet> =
+        walletDAO.getAllWallets().map {
+            it.toWallet()
+        }
+
+    override suspend fun getCertainWallet(walletId: Int): Wallet =
+        walletDAO.getCertainWallet(walletId).toWallet()
+
+    override suspend fun getSalary(): SalaryAndSpent =
+        salaryDAO.getSalary().toSalaryAndSpent()
+
     override fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>> {
         return purchaseDAO.getPurchasesOrdered(walletId).map {
             it.map { it.toPurchase() }
@@ -67,42 +82,12 @@ class FinanceRepositoryImpl @Inject constructor(
         wallet: Wallet,
         salaryAndSpent: SalaryAndSpent
     ) {
-        purchaseDAO.changeMoneyValues(purchase.toPurchaseEntity(), wallet.toWalletEntity(), salaryAndSpent.toSalaryAndSpentEntity())
-    }
-
-    companion object {
-        val namesSource = listOf<Wallet>(
-            Wallet(
-                id = 1,
-                walletName = "Неотложенные расходы",
-                moneyLeft = 0.0,
-                percents = 0.5f,
-            ),
-            Wallet(
-                id = 2,
-                walletName = "Благосостояние",
-                moneyLeft = 0.0,
-                percents = 0.1f,
-            ),
-            Wallet(
-                id = 3,
-                walletName = "Развлечения",
-                moneyLeft = 0.0,
-                percents = 0.1f,
-            ),
-            Wallet(
-                id = 4,
-                walletName = "Образование",
-                moneyLeft = 0.0,
-                percents = 0.1f,
-            ),
-            Wallet(
-                id = 5,
-                walletName = "Свободные расходы",
-                moneyLeft = 0.0,
-                percents = 0.1f,
-            ),
-        )
+        val purchaseCost = purchase.purchaseCost
+        val walletMoneyLeft = wallet.moneyLeft
+        val salaryMoneySpent = salaryAndSpent.moneySpent
+        upsertPurchase(purchase)
+        walletDAO.upsertWallet(wallet.toWalletEntity().copy(moneyLeft = walletMoneyLeft - purchaseCost))
+        salaryDAO.upsertSalary(salaryAndSpent.toSalaryAndSpentEntity().copy(moneySpent = salaryMoneySpent + purchaseCost))
     }
 
 }

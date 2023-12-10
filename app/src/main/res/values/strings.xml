@@ -12,4 +12,9 @@
     <string name="welcome_text">Добро пожаловать</string>
     <string name="input_salary_hint_text">Введите вашу зарплату</string>
     <string name="ready_button_text">Готово</string>
+    <string name="undeferred_expenses_wallet_name">Неотложенные расходы</string>
+    <string name="welfare_wallet_name">Благосостояние</string>
+    <string name="entertainment_wallet_name">Развлечения</string>
+    <string name="education_wallet_name">Образование</string>
+    <string name="free_expenses_wallet_name">Свободные расходы</string>
 </resources>

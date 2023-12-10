@@ -13,4 +13,10 @@ interface WalletDAO {
 
     @Query("SELECT * FROM wallets")
     fun getAllWalletsOrdered(): Flow<List<WalletEntity>>
+
+    @Query("SELECT * FROM wallets")
+    suspend fun getAllWallets(): List<WalletEntity>
+
+    @Query("SELECT * FROM wallets WHERE id=:walletId")
+    suspend fun getCertainWallet(walletId: Int) : WalletEntity
 }
