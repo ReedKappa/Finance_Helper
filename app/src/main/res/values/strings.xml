@@ -9,4 +9,5 @@
     <string name="confirm_button_text">Готово</string>
     <string name="purchase_name_input_hint_text">Введите название покупки</string>
     <string name="purchase_cost_input_hint_text">Введите стоимость покупки</string>
+    <string name="welcome">Добро пожаловать</string>
 </resources>
