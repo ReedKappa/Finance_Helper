@@ -11,11 +11,11 @@
     <ImageView
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
-        android:layout_height=
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/remove_bg_ai_1700682429997__1__1"
-    >
+        tools:ignore="MissingConstraints" />
 
-    </ImageView>
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/add_purchase_text"
@@ -93,7 +93,6 @@
         />
 
 
-</Button>
-    </com.google.android.material.button.MaterialButton>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
