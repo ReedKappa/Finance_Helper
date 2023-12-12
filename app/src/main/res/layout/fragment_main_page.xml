@@ -2,18 +2,127 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
 
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/top_layout"
+        android:orientation="horizontal">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/wallet_recycler"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/salary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/salary_text"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/salary_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:text="9990000 Руб." />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/money_spent_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="@string/money_spent_text"
+            android:layout_marginStart="50dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/spent_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="100000 Руб." />
+    </LinearLayout>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/welcome_text_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
+        android:textSize="34dp"
+        android:textStyle="bold"
+        android:layout_marginStart="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/wallet_item"
-        tools:itemCount="5"/>
+        app:layout_constraintTop_toBottomOf="@+id/top_layout"
+        app:layout_constraintBottom_toTopOf="@+id/middle_layout"
+        android:text="@string/welcome"/>
+
+
+    <LinearLayout
+        android:id="@+id/middle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:background="@drawable/middle_layout"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wallets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wallets"
+            android:textSize="32dp"
+            android:textColor="@color/white"
+            android:layout_marginStart="30dp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wallet_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toButtomOf="@+id/wallets"
+            tools:itemCount="5"
+            tools:listitem="@layout/wallet_item" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/buttom_layout"
+        android:padding="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/salary_month"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/green_dark"
+            android:text="@string/salary_month"
+            android:textSize="20dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
