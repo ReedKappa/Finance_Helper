@@ -81,6 +81,7 @@
         android:background="@drawable/middle_layout"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
