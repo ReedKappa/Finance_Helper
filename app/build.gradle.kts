@@ -62,4 +62,6 @@ dependencies {
 
     //vbpd
     implementation ("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+
+    implementation ("com.google.android.material:material:<version>")
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="materialtext_button_color">#3071A3</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="green_light">#93D88D</color>
+    <color name="green_middle">#2FA125</color>
+    <color name="green_dark">#70AA6B</color>
+    <color name="green_background">#93D88D</color>
 </resources>
