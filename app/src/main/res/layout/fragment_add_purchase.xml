@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2FA125"
+    android:background="@color/green_middle"
     android:padding="16dp">
 
 
@@ -12,8 +12,9 @@
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/remove_bg_ai_1700682429997__1__1"
-        tools:ignore="MissingConstraints" />
+        android:background="@drawable/remove_bg_ai_1700682429997__1__1"
+        tools:ignore="MissingConstraints"
+        />
 
 
 
