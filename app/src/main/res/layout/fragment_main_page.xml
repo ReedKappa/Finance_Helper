@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:layout_marginStart="10dp"
             android:text="@string/salary_text"/>
 
@@ -34,8 +34,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="16dp"
-            android:text="9990000 Руб." />
+            android:textSize="16sp"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/money_spent_text"
@@ -43,7 +42,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:text="@string/money_spent_text"
             android:layout_marginStart="50dp"/>
@@ -54,9 +53,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/white"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:text="100000 Руб." />
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -65,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="34dp"
+        android:textSize="34sp"
         android:textStyle="bold"
         android:layout_marginStart="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wallets"
-            android:textSize="32dp"
+            android:textSize="32sp"
             android:textColor="@color/white"
             android:layout_marginStart="30dp"/>
 
@@ -123,7 +121,7 @@
             android:layout_height="60dp"
             android:backgroundTint="@color/green_dark"
             android:text="@string/salary_month"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
