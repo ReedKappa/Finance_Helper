@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Finance Helper</string>
-    <string name="salary_text">Денег заработано:</string>
-    <string name="money_spent_text">Денег потрачено:</string>
+    <string name="salary_text">Доходы:</string>
+    <string name="money_spent_text">Расходы:</string>
     <string name="add_purchase_text">Добавить покупку</string>
     <string name="show_purchase_text">Посмотреть покупки</string>
     <string name="money_spent_base_text">0 Руб.</string>

@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/white"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="16dp">
+    app:cardCornerRadius="60dp"
+    android:layout_marginTop="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="20dp"
+        android:showDividers="middle"
+        >
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/walltet_name"
@@ -25,19 +27,19 @@
             android:id="@+id/show_purchases_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/walltet_name"
-            app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/show_purchase_text"
-            android:textColor="@color/materialtext_button_color"/>
+            android:textColor="@color/green_middle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/walltet_name" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/add_purchase_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/materialtext_button_color"
+            android:text="@string/add_purchase_text"
+            android:textColor="@color/green_middle"
             app:layout_constraintStart_toStartOf="@id/walltet_name"
-            app:layout_constraintTop_toBottomOf="@id/walltet_name"
-            android:text="@string/add_purchase_text" />
+            app:layout_constraintTop_toBottomOf="@id/walltet_name" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/money_left"
