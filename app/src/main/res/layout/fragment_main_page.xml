@@ -14,7 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/top_layout"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="3dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/salary_text"
@@ -60,7 +61,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/welcome_text_id"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="34sp"
@@ -69,6 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_layout"
         app:layout_constraintBottom_toTopOf="@+id/middle_layout"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/welcome"/>
 
 
