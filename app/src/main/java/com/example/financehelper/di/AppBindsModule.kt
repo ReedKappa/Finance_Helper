@@ -20,6 +20,8 @@ import com.example.financehelper.domain.GetWalletsOrderedUseCase
 import com.example.financehelper.domain.GetWalletsOrderedUseCaseImpl
 import com.example.financehelper.domain.IsOnboardingRequiredUSeCaseImpl
 import com.example.financehelper.domain.IsOnboardingRequiredUseCase
+import com.example.financehelper.domain.ResetUseCase
+import com.example.financehelper.domain.ResetUseCaseImpl
 import com.example.financehelper.domain.UpsertPurchaseUseCase
 import com.example.financehelper.domain.UpsertPurchaseUseCaseImpl
 import com.example.financehelper.domain.UpsertSalaryUseCase
@@ -72,6 +74,9 @@ interface AppBindsModule {
 
     @Binds
     fun bindGetSalaryUseCase(useCase: GetSalaryUseCaseImpl): GetSalaryUseCase
+
+    @Binds
+    fun bindResetUseCase(useCase: ResetUseCaseImpl): ResetUseCase
 
     companion object {
         @Provides

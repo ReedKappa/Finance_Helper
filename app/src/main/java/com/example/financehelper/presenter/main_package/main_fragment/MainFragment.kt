@@ -1,5 +1,6 @@
 package com.example.financehelper.presenter.main_package.main_fragment
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.financehelper.data.model.Wallet
 import com.example.financehelper.databinding.FragmentMainPageBinding
 import com.example.financehelper.di.ViewModelFactory
 import com.example.financehelper.di.appComponent
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
 
 class MainFragment: Fragment(R.layout.fragment_main_page) {
@@ -36,9 +38,32 @@ class MainFragment: Fragment(R.layout.fragment_main_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initRecycler()
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.financeList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+            for (wallet in it.drop(1)) {
+                if ((wallet as Wallet).moneyLeft <=0) {
+                    MaterialAlertDialogBuilder(requireContext()).setTitle("Внимание!")
+                        .setMessage("Внимание, вы потратили все доступные средства в ${wallet.walletName} " +
+                                "пожалуйста воздержитесь от затрат на данную категорию!")
+                        .setNeutralButton("Ок") {_,_ ->
+                        }
+                        .create()
+                        .show()
+                }
+            }
+        }
+        binding.salaryResetButton.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Подтвердите действие")
+                .setMessage("Внимание! При подтверждении данного действия все данные будут удалены!" +
+                        "Вы действительно хотите утратить весь прогресс?")
+                .setPositiveButton("Подтвердить") {_,_ ->
+                    viewModel.resetProgress()
+                }
+                .setNeutralButton("Отмена") {_,_ ->
+                }
+                .create()
+                .show()
+
         }
 
         viewModel.getSalaryAndWallets()

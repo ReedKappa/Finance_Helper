@@ -29,9 +29,18 @@ class AddSalaryFragment: Fragment(R.layout.fragment_add_salary) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonDone.setOnClickListener {
-            viewModel.upsertSalary(binding.salaryInput.text.toString().toDouble()) {
-                findNavController().popBackStack()
+            if (isSalaryCorrect()) {
+                viewModel.upsertSalary(binding.salaryInput.text.toString().replace(" ", "").toDouble()) {
+                    findNavController().popBackStack()
+                }
+            } else {
+                binding.emptyFieldWarningText.text = "Зарплата введена неверно!"
+                binding.emptyFieldWarningText.visibility = View.VISIBLE
             }
         }
+    }
+
+    private fun isSalaryCorrect(): Boolean {
+        return (!binding.salaryInput.text.toString().matches("".toRegex())) && (!binding.salaryInput.text.toString().contains("-"))
     }
 }

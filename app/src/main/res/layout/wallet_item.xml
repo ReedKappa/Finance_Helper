@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/white"
     app:cardCornerRadius="16dp"
-    app:cardElevation="16dp">
+    android:layout_marginBottom="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,37 +14,59 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/walltet_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="кошелек важных вещей" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/show_purchases_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/walltet_name"
+            tools:text="Кошелек"
+            android:textAlignment="center"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/show_purchase_text"
-            android:textColor="@color/materialtext_button_color"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/add_purchase_button"
-            android:layout_width="wrap_content"
+            android:id="@+id/can_spend_text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/materialtext_button_color"
-            app:layout_constraintStart_toStartOf="@id/walltet_name"
+            android:text="@string/can_spend_text"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/walltet_name"
-            android:text="@string/add_purchase_text" />
+            android:layout_marginTop="10dp"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/money_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/add_purchase_button"
-            tools:text="60 000 Руб." />
+            app:layout_constraintTop_toTopOf="@id/can_spend_text"
+            tools:text="60000 руб" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_purchase_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green_middle"
+            android:text="@string/add_purchase_text"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/can_spend_text"
+            android:layout_marginTop="10dp"
+            app:cornerRadius="16dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/show_purchases_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green_middle"
+            android:text="@string/show_purchase_text"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_purchase_button"
+            app:cornerRadius="16dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

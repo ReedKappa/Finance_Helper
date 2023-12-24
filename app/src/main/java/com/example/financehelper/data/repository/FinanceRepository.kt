@@ -24,6 +24,7 @@ interface FinanceRepository {
     suspend fun getAllWallets(): List<Wallet>
     suspend fun getCertainWallet(walletId: Int): Wallet
     suspend fun getSalary(): SalaryAndSpent
+    suspend fun clear()
 }
 
 class FinanceRepositoryImpl @Inject constructor(
@@ -58,6 +59,12 @@ class FinanceRepositoryImpl @Inject constructor(
 
     override suspend fun getSalary(): SalaryAndSpent =
         salaryDAO.getSalary().toSalaryAndSpent()
+
+    override suspend fun clear() {
+        purchaseDAO.clear()
+        walletDAO.clear()
+        salaryDAO.clear()
+    }
 
     override fun purchaseOrdered(walletId: Int) :Flow<List<Purchase>> {
         return purchaseDAO.getPurchasesOrdered(walletId).map {

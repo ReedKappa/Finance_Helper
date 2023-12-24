@@ -17,4 +17,11 @@
     <string name="entertainment_wallet_name">Развлечения</string>
     <string name="education_wallet_name">Образование</string>
     <string name="free_expenses_wallet_name">Свободные расходы</string>
+    <string name="wallets">Кошельки</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="salary_month">Укажите ваш доход за месяц</string>
+    <string name="salary_continue">Для продолжения укажите ваш доход</string>
+    <string name="add_purchase_welcome_text">Добавить покупку</string>
+    <string name="all_purchases_text">Ваши покупки:</string>
+    <string name="can_spend_text">Можно потратить:</string>
 </resources>

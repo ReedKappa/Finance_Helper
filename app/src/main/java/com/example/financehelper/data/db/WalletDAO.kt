@@ -19,4 +19,7 @@ interface WalletDAO {
 
     @Query("SELECT * FROM wallets WHERE id=:walletId")
     suspend fun getCertainWallet(walletId: Int) : WalletEntity
+
+    @Query("DELETE FROM wallets WHERE 1=1")
+    suspend fun clear()
 }

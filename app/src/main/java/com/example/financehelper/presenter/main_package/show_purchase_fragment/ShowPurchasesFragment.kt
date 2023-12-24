@@ -3,8 +3,10 @@ package com.example.financehelper.presenter.main_package.show_purchase_fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -44,6 +46,10 @@ class ShowPurchasesFragment: Fragment(R.layout.fragment_see_purchases) {
         }
 
         viewModel.getPurchasesOrdered(args.walletId)
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun initRecycler() = with(binding.purchasesRecycler) {

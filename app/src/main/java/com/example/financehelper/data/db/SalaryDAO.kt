@@ -16,4 +16,7 @@ interface SalaryDAO {
 
     @Query("SELECT * FROM salary LIMIT 1")
     suspend fun getSalary(): SalaryAndSpentEntity
+
+    @Query("DELETE FROM salary WHERE 1=1")
+    suspend fun clear()
 }

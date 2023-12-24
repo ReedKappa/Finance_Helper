@@ -43,8 +43,12 @@ class AddPurchaseFragment: Fragment(R.layout.fragment_add_purchase) {
         }
         binding.buttonConfirm.setOnClickListener {
             if (!addPurchase()) {
-                Toast.makeText(requireContext(), "Ошибка при парсинге дабла", Toast.LENGTH_SHORT).show()
+                binding.emptyFieldWarningText.text = "Стоимость введена неверно"
+                binding.emptyFieldWarningText.visibility = View.VISIBLE
             }
+        }
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

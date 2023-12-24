@@ -27,6 +27,9 @@
                 android:defaultValue="-1"/>
 
         </action>
+        <action
+            android:id="@+id/action_mainFragment_to_addSalaryFragment"
+            app:destination="@id/addSalaryFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPurchaseFragment"
@@ -53,9 +56,5 @@
     <fragment
         android:id="@+id/addSalaryFragment"
         android:name="com.example.financehelper.presenter.main_package.add_salary_package.AddSalaryFragment"
-        android:label="AddSalaryFragment" >
-        <action
-            android:id="@+id/action_addSalaryFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
+        android:label="AddSalaryFragment" />
 </navigation>

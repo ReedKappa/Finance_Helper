@@ -18,4 +18,7 @@ abstract class PurchaseDAO {
 
     @Query("SELECT * FROM purchases WHERE walletId=:walletId")
     abstract fun getPurchasesOrdered(walletId: Int): Flow<List<PurchaseEntity>>
+
+    @Query("DELETE FROM purchases WHERE 1=1")
+    abstract suspend fun clear()
 }
