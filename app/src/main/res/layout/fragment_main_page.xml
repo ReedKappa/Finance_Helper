@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/welcome_text_id"
         android:layout_width="match_parent"
@@ -15,29 +16,23 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/middle_layout"
         app:layout_constraintEnd_toEndOf="parent"
         android:textAlignment="center"
-        android:text="@string/welcome"/>
+        android:text="@string/welcome"
+        android:layout_marginTop="20dp"/>
 
     <LinearLayout
         android:id="@+id/middle_layout"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
+        android:layout_height="0dp"
         android:background="@drawable/middle_layout"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
         android:padding="16dp"
-        app:layout_constraintStart_toStartOf="parent">
-
-<!--        <com.google.android.material.textview.MaterialTextView-->
-<!--            android:id="@+id/wallets"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/wallets"-->
-<!--            android:textSize="32sp"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:layout_marginStart="30dp"/>-->
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcome_text_id"
+        app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -45,13 +40,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wallets"
             tools:itemCount="5"
             />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@id/bottom_layout"
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +61,8 @@
             android:layout_height="60dp"
             android:backgroundTint="@color/green_dark"
             android:text="@string/salary_month"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

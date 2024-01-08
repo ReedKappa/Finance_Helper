@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:padding="16dp">
 
         <com.google.android.material.textview.MaterialTextView
@@ -19,6 +20,7 @@
             tools:text="Кошелек"
             android:textAlignment="center"
             android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +31,7 @@
             android:layout_height="wrap_content"
             android:text="@string/can_spend_text"
             android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/walltet_name"
@@ -39,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/can_spend_text"
             tools:text="60000 руб" />
@@ -50,6 +54,7 @@
             android:backgroundTint="@color/green_middle"
             android:text="@string/add_purchase_text"
             android:textSize="20sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/can_spend_text"
@@ -63,6 +68,7 @@
             android:backgroundTint="@color/green_middle"
             android:text="@string/show_purchase_text"
             android:textSize="20sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_purchase_button"

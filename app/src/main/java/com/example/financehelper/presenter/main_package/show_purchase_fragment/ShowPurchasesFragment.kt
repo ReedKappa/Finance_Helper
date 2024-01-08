@@ -51,9 +51,4 @@ class ShowPurchasesFragment: Fragment(R.layout.fragment_see_purchases) {
             findNavController().popBackStack()
         }
     }
-
-    private fun initRecycler() = with(binding.purchasesRecycler) {
-        layoutManager = LinearLayoutManager(requireContext())
-        adapter = this@ShowPurchasesFragment.adapter
-    }
 }

@@ -22,6 +22,7 @@
         android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/back_button"/>
 
     <com.google.android.material.textfield.TextInputEditText
@@ -34,6 +35,7 @@
         android:gravity="center"
         android:textColorHint="@color/green_dark"
         android:textSize="20sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +50,7 @@
         android:gravity="center"
         android:inputType="numberDecimal"
         android:textSize="20sp"
+        android:textStyle="normal"
         android:background="@drawable/roudedstyle"
         android:layout_marginTop="20dp"
         android:textColorHint="@color/green_dark"
@@ -65,13 +68,12 @@
         android:textColor="@color/warning_color"
         android:layout_marginTop="10dp"
         tools:text="Тест"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="342dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/shopping_cart_svgrepo_com__1__1"
         app:layout_constraintTop_toBottomOf="@+id/empty_field_warning_text" />
 
@@ -82,6 +84,7 @@
         android:backgroundTint="@color/green_dark"
         android:text="@string/ready_button_text"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="40dp" />
 

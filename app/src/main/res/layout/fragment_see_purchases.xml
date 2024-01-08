@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/back_button"
-        app:layout_constraintTop_toTopOf="@id/back_button"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
         app:layout_constraintBottom_toBottomOf="@id/back_button"
         android:text="@string/all_purchases_text"
         android:textColor="@color/white"
@@ -25,7 +25,7 @@
         android:id="@+id/purchases_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/back_button"
+        app:layout_constraintTop_toBottomOf="@+id/all_purchases_text"
         tools:listitem="@layout/purchase_item" />
 
     <ImageView
